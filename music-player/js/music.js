@@ -9,7 +9,8 @@ var app = new Vue({
         isPlaying:false,
         mvUrl:'',
         isShow:false,
-        imgShow:false
+        imgShow:false,
+        localUserPic:["../img/user1.jpg","../img/user2.jpg"]
     },
     methods:{
         searchMusic:function(){

@@ -39,7 +39,8 @@
             <td class="right">
                 <dl v-for="(item,index) in hotComments">
                     <dt >
-                        <img :scr="item.user.avatarUrl" width="30px" height="30px" alt="">
+                        <!-- <img :scr="item.user.avatarUrl" width="30px" height="30px" alt=""> -->
+                        <img :src="localUserPic[index%2]" width="28px">
                     </dt>
                     <dd class="name">
                         <strong>{{item.user.nickname}}:</strong>
@@ -60,7 +61,10 @@
         <video :src="mvUrl" controls autoplay loop class="video"></video>
         <div class="mask" @click="hide"></div>
     </div>
+    <dl v-for="(item,index) in hotComments">
 
+    <img :scr="item.user.avatarUrl"  alt="">
+    </dl>
 </div>
 <!--  开发环境版本，包含了有帮助的命令行警告 -->
 <script src="../js/vue.js"></script>
