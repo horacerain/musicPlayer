@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Vue Command</title>
+    <link rel="stylesheet" type="text/css" href="../css/music.css">
+</head>
+<body>
+<div id="player" class="app">
+    <table>
+        <tr class="head">
+            <td colspan="3" class="head">
+                <span>
+                    <input type="text" v-model="query" @keyup.enter="searchMusic">
+                    搜索
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <ul>
+                    <li v-for="(item,index) in musicList">
+                        <a href="javascript:;"
+                            @click="playMusic(item.id)">◆</a>
+                        <b>{{item.name}}</b>
+                        <span v-show="item.mvid!=0"
+                            @click="playMv(item.mvid)">□</span>
+                    </li>
+                </ul>
+            </td>
+            <td class="middle">
+                <img :src="musicCover" v-show="imgShow"  class="cover autoRotate"/>
+            </td>
+            <td class="right">
+                <dl v-for="(item,index) in hotComments">
+                    <dt >
+                        <img :scr="item.user.avatarUrl" width="30px" height="30px" alt="">
+                    </dt>
+                    <dd class="name">
+                        <strong>{{item.user.nickname}}:</strong>
+                    </dd>
+                    <dd class="detail">
+                        {{item.content}}
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <audio ref='audio' @play="play" @pause="pause" :src="musicUrl" controls autoplay loop class="myaudio"></audio>
+            </td>
+        </tr>        
+    </table>
+    <div v-show="isShow">
+        <video :src="mvUrl" controls autoplay loop class="video"></video>
+        <div class="mask" @click="hide"></div>
+    </div>
+
+</div>
+<!--  开发环境版本，包含了有帮助的命令行警告 -->
+<script src="../js/vue.js"></script>
+<script src="../js/axios.min.js"></script>
+<script src="../js/music.js"></script>
+</body>
+</html>
