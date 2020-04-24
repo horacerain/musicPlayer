@@ -13,7 +13,7 @@
             <td colspan="3" class="head">
                 <span>
                     <input type="text" v-model="query" @keyup.enter="searchMusic">
-                    搜索
+                <input type="button" value="搜索" @click="searchMusic"></span>
                 </span>
             </td>
         </tr>
@@ -22,10 +22,14 @@
                 <ul>
                     <li v-for="(item,index) in musicList">
                         <a href="javascript:;"
-                            @click="playMusic(item.id)">◆</a>
-                        <b>{{item.name}}</b>
+                            @click="playMusic(item.id)">
+                            <img src="../img/play.jpg" width="18px">
+                            <b>{{item.name}}</b>
+                        </a>
                         <span v-show="item.mvid!=0"
-                            @click="playMv(item.mvid)">□</span>
+                            @click="playMv(item.mvid)">
+                            <img src="../img/mv.jpg" width="18px">
+                        </span>
                     </li>
                 </ul>
             </td>
