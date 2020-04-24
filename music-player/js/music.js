@@ -10,7 +10,8 @@ var app = new Vue({
         mvUrl:'',
         isShow:false,
         imgShow:false,
-        localUserPic:["../img/user1.jpg","../img/user2.jpg"]
+        localUserPic:["../img/user1.jpg","../img/user2.jpg"],
+        styleBackImg:{background:''}
     },
     methods:{
         searchMusic:function(){
@@ -50,6 +51,9 @@ var app = new Vue({
                         // console.log(response.data.songs[0].al.picUrl);
                         that.musicCover = response.data.songs[0].al.picUrl;
                         that.imgShow=true;
+                        that.styleBackImg={
+                            background:'url('+that.musicCover+')'
+                        }
                     },
                     function(err){
                         console.log(err);
