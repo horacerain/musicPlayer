@@ -1,1 +1,2 @@
-my vue test project ;
+my vue.js test project ;
+
